@@ -1,5 +1,5 @@
-{% extends 'exercises/index.html' %}
-{% block 'body' %}
+{% extends "index.html" %}
+{% block body %}
 
 <h1>Results</h1>
 <h3>Adverts Results:</h3>
@@ -12,13 +12,6 @@
         <th>Score</th>
       </tr>
     </thead>
-    {% for user in users %}
-    <tr>
-        <td>{{user.username}}</td>
-        <td>{{user.totalCorrect}}</td>
-        <td>{{user.totalIncorrect}}</td>
-        <td>{{user.score}}</td>
-    </tr>
-    {% endfor %}
+
 </table>
 {% endblock %}
