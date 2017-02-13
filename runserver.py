@@ -1,7 +1,7 @@
 """
 This script runs the webshop application using a development server.
 """
-
+from flask import Flask
 from os import environ
 from flask import Flask
 
