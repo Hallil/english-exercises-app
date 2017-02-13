@@ -1,4 +1,5 @@
 from flask import *
+from . import app
 
 @app.route('/')
 @app.route('/home')
