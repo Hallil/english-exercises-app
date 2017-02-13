@@ -51,6 +51,36 @@ def register():
         return render_template('register.html')
 
 
+@app.route("/login", methods=['POST', 'GET'])
+def login():
+    if request.method == 'POST':
+        if check_login(request.form['username'], request.form['password']):
+            session['logged_in'] = True
+            return "You are now logged in"
+        else:
+            return "access denied"
+    else:
+        return render_template('login.html')
+
+
+def check_login(username, password):
+    user = query_db("SELECT * FROM users WHERE username==?;", [username], 1)
+    passw = query_db("SELECT * FROM users WHERE username==?;", [password], 2)
+    if user or passw is None:
+        return False
+    else:
+        if user == username and password == passw:
+            return True
+
+
+def query_db(query, i, args=(), one=False):
+    cur = get_db().execute(query, args)
+    rv = cur.fetchall()
+    cur.close()
+    return (rv[i] if rv else None) if one else rv
+
+
+
 def connect_db():
     """Connects to the specific database."""
     rv = sqlite3.connect(app.config['DATABASE'])
@@ -72,10 +102,6 @@ def init_db():
     with app.open_resource('schema.sql', mode='r') as f:
         db.cursor().executescript(f.read())
     db.commit()
-
-@app.route("/login")
-def login():
-    return render_template('login.html')
 
 
 # Section for Eelco
