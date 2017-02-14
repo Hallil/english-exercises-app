@@ -7,11 +7,18 @@ from flask import g
 from english_exercises.dbconnector import *
 
 def check_login(username, password):
+    #values komen terug als unicode! convert to ascii!
     user = query_db("SELECT * FROM users WHERE username==? AND password ==?;", (username, password, ), 1)
+    for k, v in user.items():
+        #column print(k)
+        #value print(v)
+        user[k] = str(v)
+    #print(user)
     if user is None:
         return False
     else:
         if username == user['username'] and password == user['password']:
+            print("login checked: True")
             return True
 
 def register_user(username, password):
