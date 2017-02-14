@@ -18,10 +18,14 @@
             <li><a>|</a></li>
             {% if not session.logged_in %}
                 <li><a href="{{ url_for ('login') }}">Login</a></li>
+                <li><a href="{{ url_for ('register') }}">Register</a></li>
             {% else %}
-                <li><a href="{{ url_for('logout') }}">log out</a></li>
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
             {% endif %}
-            <li><a href="{{ url_for ('register') }}">Register</a></li>
+            
+            {% if session.logged_in %}
+                <li><a>Logged in as: {{ username }}</a></li>
+            {% endif %}
         </ul>
     </nav>
     {% for message in get_flashed_messages() %}

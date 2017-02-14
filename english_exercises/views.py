@@ -4,17 +4,19 @@ from functools import wraps
 from flask import render_template, make_response, request, session, escape, url_for, redirect, current_app, jsonify, json, abort, flash
 from english_exercises.dblayer import *
 
+#decorator function
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
         if session.get('logged_in') is None:
+            flash("You must be logged in for this feature")
             return redirect(url_for('login', next=request.url))
         return f(*args, **kwargs)
     return decorated_function
 
-@app.route("/")
+@app.route("/", methods=['GET'])
 def home():
-    flash("Welcome!")
+    #flash("Welcome!")
     return render_template('index.html')
 
 # Section for Rene
@@ -63,21 +65,29 @@ def register():
 def login():
     if request.method == 'POST':
         if check_login(request.form['username'], request.form['password']):
-            print(request.form['next'])
+            n = str(request.form['next'])
+            print("request.form['next']="+request.form['next'])
             session['logged_in'] = True
-            if request.form['next'] != "": return redirect(request.form['next'])
-            else: return redirect(url_for('home'))
+            session['username'] = request.form['username']
+            flash("You were succesfully logged in!")
+            if request.form['next'] == "": #breaks here
+                return redirect(url_for('home'))
+            else: 
+                print("login else")
+                return url_for('home', username=session['username'])
         else:
             return "access denied"
     else:
         return render_template('login.html')
 
-@app.route('/logout', methods=['POST'])
+@app.route('/logout', methods=['POST', 'GET'])
 @login_required
 def logout():
-    if session['logged_in'] is not None:
-        del session['logged_in']
-        return redirect(url_for('index'))
+    del session['logged_in']    
+    if session['username'] is not None:
+        del session['username']
+    flash("You were succesfully logged out!")
+    return redirect(url_for('home'))
 
 # Section for Eelco
 
@@ -85,6 +95,9 @@ def logout():
 @app.route('/gerund/<level>')
 @login_required
 def gerund(level=None):
+    if level == "A1":
+        return render_template('gerund/A1.html')
+
     return "Gerund Exercises :DDDDDD"
 
 
@@ -101,6 +114,7 @@ def nouns():
 def results():
     return render_template('results.html')
 
+#is voor testen van db
 @app.route('/sql')
 def sql():
     print(query_db("SELECT u.username FROM users as u where u.username=?", ('eelco', )))

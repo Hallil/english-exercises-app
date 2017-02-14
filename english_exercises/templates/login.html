@@ -20,7 +20,7 @@
        <button type="submit" class="btn btn-default">Login</button>
      </div>
    </div>
-   <input type="hidden" value="{{ request.args.get('next', '') }}"/>
+   <input name="next" type="hidden" value="{{ request.args.get('next', '') }}"/>
   </form>
 </div>
 {% endblock %}
