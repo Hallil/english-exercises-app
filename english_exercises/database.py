@@ -14,7 +14,13 @@ def get_db():
     current application context.
     """
     if not hasattr(g, 'sqlite_db'):
-        g.sqlite_db = connect_db()
+        db = g.sqlite_db = connect_db()
+    def make_dicts(cursor, row):
+        return dict((cursor.description[idx][0], value)
+                    for idx, value in enumerate(row))
+
+    db.row_factory = make_dicts
+
     return g.sqlite_db
 
 
