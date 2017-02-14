@@ -19,9 +19,10 @@ def register_user(username, password):
     # INSERT INTO users 
     # VALUES (%(u)s, %(p)s, 0, 0)
     # """ % {'u' : username, 'p' : password}
-
-    if query_db("SELECT u.username FROM users as u where u.username=?", (username,)) is not None:
+    t = query_db("SELECT u.username FROM users as u where u.username=?", (username,)) 
+    if t is None or t == []:
         res = query_db("INSERT INTO users (username, password, correct, incorrect) VALUES (?, ?, 0, 0)", (username, password, ))
+        get_db().commit()
         print("register_user | "+str(res))
         return 1
     else: return 0
