@@ -52,10 +52,10 @@ def register():
         # db.commit()
         c = register_user(request.form['username'], request.form['password'])
         if c == 1: flash('You were succesfully registered.')
-        else: 
+        else:
             print('Register failed')
             return redirect(url_for('register'))
-        
+
         return render_template('login.html')
     else:
         return render_template('register.html')
@@ -64,7 +64,7 @@ def register():
 @app.route("/login", methods=['POST', 'GET'])
 def login():
     if request.method == 'POST':
-        if check_login(request.form['username'], request.form['password']):
+        if user_exists(request.form['username'], request.form['password']):
             n = str(request.form['next'])
             print("request.form['next']="+request.form['next'])
             session['logged_in'] = True
@@ -72,7 +72,7 @@ def login():
             flash("You were succesfully logged in!")
             if request.form['next'] == "": #breaks here
                 return redirect(url_for('home'))
-            else: 
+            else:
                 print("login else")
                 return url_for('home')
         else:
@@ -83,7 +83,7 @@ def login():
 @app.route('/logout', methods=['POST', 'GET'])
 @login_required
 def logout():
-    del session['logged_in']    
+    del session['logged_in']
     if session['username'] is not None:
         del session['username']
     flash("You were succesfully logged out!")
@@ -120,5 +120,3 @@ def sql():
     print(query_db("SELECT u.username FROM users as u where u.username=?", ('eelco', )))
     print(g.user)
     return jsonify(query_db("SELECT * FROM users"))
-
-

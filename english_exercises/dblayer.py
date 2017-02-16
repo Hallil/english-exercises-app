@@ -5,31 +5,27 @@ DB Abstraction layer
 import sqlite3
 from flask import g
 from english_exercises.dbconnector import *
+from english_exercises.models import User
+from english_exercises import db
+from flask_sqlalchemy import SQLAlchemy
 
-def check_login(username, password):
-    #values komen terug als unicode! convert to ascii!
-    user = query_db("SELECT * FROM users WHERE username==? AND password ==?;", (username, password, ), 1)
-    for k, v in user.items():
-        #column print(k)
-        #value print(v)
-        user[k] = str(v)
-    #print(user)
+
+def user_exists(userName, passWord):
+    user = get_user(userName, passWord)
     if user is None:
         return False
     else:
-        if username == user['username'] and password == user['password']:
-            print("login checked: True")
-            return True
+        return True
 
-def register_user(username, password):
-    # query = """
-    # INSERT INTO users 
-    # VALUES (%(u)s, %(p)s, 0, 0)
-    # """ % {'u' : username, 'p' : password}
-    t = query_db("SELECT u.username FROM users as u where u.username=?", (username,)) 
-    if t is None or t == []:
-        res = query_db("INSERT INTO users (username, password, correct, incorrect) VALUES (?, ?, 0, 0)", (username, password, ))
-        get_db().commit()
-        print("register_user | "+str(res))
+def register_user(userName, passWord):
+    if user_exists(userName, passWord) is False:
+        new_user = User(userName, passWord, 0, 0)
+        db.session.add(new_user)
+        db.session.commit()
         return 1
-    else: return 0
+    else:
+        return 0
+
+
+def get_user(userName, passWord):
+    return User.query.filter_by(username=userName).filter_by(password=passWord).first()

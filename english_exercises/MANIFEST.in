@@ -1,3 +1,2 @@
 graft english_exercises/templates
 graft english_exercises/static
-include english_exercises/schema.sql
