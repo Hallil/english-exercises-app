@@ -97,8 +97,31 @@ def logout():
 def gerund(level=None):
     if level == "A1":
         return render_template('gerund/A1.html')
+    elif level == "A2":
+        return render_template('gerund/A2.html')
+    elif level == "B1":
+        return render_template('gerund/B1.html')
+    elif level == "B2":
+        return render_template('gerund/B2.html')
+    elif level == "C1":
+        questions = []
+        questions.append(question('My friend is good %s playing volleyball.'))
+        questions.append(question("hello %s world"))
+        questions.append(question("3 %s"))
+        return render_template('gerund/C1.html', questions=questions)
+
 
     return render_template('gerund/gerund.html')
+@app.route('/api/submit/<category>/<level>', methods=['POST'])
+def submit(category, level):
+    if request.method == 'POST':
+        #do stuff to test and store results
+        return redirect(url_for('home'))
+
+class question():
+    
+    def __init__(self, questionstring):
+        self.question = questionstring
 
 
 # Section for Halil
@@ -117,8 +140,6 @@ def results():
 #is voor testen van db
 @app.route('/sql')
 def sql():
-    print(query_db("SELECT u.username FROM users as u where u.username=?", ('eelco', )))
-    print(g.user)
-    return jsonify(query_db("SELECT * FROM users"))
+    return jsonify(init_db())
 
 

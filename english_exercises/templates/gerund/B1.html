@@ -1,37 +1,19 @@
-{% extends 'exercises/gerund/gerund.html' %}
-{% block 'form' %}
+{% extends 'gerund/gerund.html' %}
+{% block form %}
+{% macro input(name, value='', type='text', size=5) -%}
+    <input type="{{ type }}" name="{{ name }}" value="{{ value|e }}" size="{{ size }}">
+{%- endmacro %}
+<h2>B1</h2>
+<form action="/api/submit/gerund/B1" method="post">
+{% for q in questions %}
+    <div class="form-group">
+            {{- q.question |format(input(loop.index))|safe -}}
+    </div>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-<form action="B1/" method="post">
-    {% csrf_token %}
-    
-    Which preposition has to be used in the gap so that a Gerund can follow?
-    <div class="form-group">
-        <label>Username:</label> <br />
-        <input type="text" name="username" />
-    </div>
-    <div class="form-group">
-        <label>dream <input type="text" name="question_1" />+ Gerund</label> <br />
-    </div>
-    <!-- of -->
-    <div class="form-group">
-        <label>talk <input type="text" name="question_2" /> + Gerund</label> <br />
-    </div>
-    <!-- of -->
-    <div class="form-group">
-        <label>think <input type="text" name="question_3" /> + Gerund</label> <br />
-    </div>
-    <!-- of -->
-    <div class="form-group">
-        <label>insist <input type="text" name="question_4" /> + Gerund</label> <br />
-    </div>
-    <!-- on -->
-    <div class="form-group">
-        <label>rely <input type="text" name="question_5" /> + Gerund</label> <br />
-    </div>
-    <!-- on -->
-    <input type="submit" value="Submit" />
+{% endfor %}
+    <input type="submit">
 </form>
+
+
 
 {% endblock %}
