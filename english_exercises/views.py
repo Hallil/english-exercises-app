@@ -96,9 +96,86 @@ def logout():
 @login_required
 def gerund(level=None):
     if level == "A1":
-        return render_template('gerund/A1.html')
+        questions = []
+        questions.append(question("My friend is good %s playing volleyball."))
+        questions.append(question("She complains %s bullying." ))
+        questions.append(question("They are afraid %s losing the match."))
+        questions.append(question("She doesn't feel %s working on the computer."))
+        questions.append(question("We are looking forward %s going out at the weekend."))
+        questions.append(question("Laura dreams %s living on a small island."))
+        questions.append(question("Andrew apologized %s being late."))
+        questions.append(question("I don't agree %s what you are saying."))
+        questions.append(question("The girls insisted %s going out with Kerry."))
+        questions.append(question("Edward thinks %s climbing trees this afternoon."))
+        return render_template('gerund/A1.html', questions=questions, level=level)
+    elif level == "A2":
+        options = ['about', 'for', 'on', 'to', 'of', 'up']
+        questions = []
+        questions.append(question("I'm afraid %s %s my smartphone. (to lose)", options))
+        questions.append(question("She is looking forward %s %s her brother.<i>(to see)</i>", options))
+        questions.append(question("He is responsible %s %s the money. <i>(to collect)</i>", options))
+        questions.append(question("She is used %s %s to bed late. <i>(to go)</i>", options))
+        questions.append(question("He apologized %s %s late. <i>(to be)</i>", options))
+        questions.append(question("Larry never worries %s %s friends. <i>(to make)</i>", options))
+        questions.append(question("We are tired %s %s for the bus. <i> (to wait)</i>", options))
+        questions.append(question("She insisted %s %s to her lawyer. <i>(to talk)</i>", options))
+        questions.append(question("You should give %s %s you sister. <i>(to bully)</i>", options))
+        questions.append(question("They are thinking %s %s to Italy. <i>(to move)</i>", options))
+        return render_template('gerund/A2.html', questions=questions, level=level)
+    elif level == "B1":
+        questions = []
+        questions.append(question("I can't imagine Peter %s <i>(go)</i> by bike."))
+        questions.append(question("He agreed %s <i>(buy)</i> a new car."))
+        questions.append(question("The questions is easy %s <i>(answer)</i>"))
+        questions.append(question("The man asked me how %s <i>(get)</i> to the airport."))
+        questions.append(question("I look forward to %s <i>(see)</i> you at the weekend."))
+        questions.append(question("Are you thinking of %s <i>(visit)</i> London?"))
+        questions.append(question("We decided %s <i>(run)</i> through the forest."))
+        questions.append(question("The teacher expected Sarah %s <i>(study)</i> hard."))
+        questions.append(question("She doesn't mind %s <i>(work)</i> the night shift."))
+        questions.append(question("I learned %s <i>(ride)</i> the bike at the age of 5."))
+        return render_template('gerund/B1.html', questions=questions, level=level)
+    elif level == "B2":
+        questions = []
+        questions.append(question("We decided %s <i>(buy)</i> a new car."))
+        questions.append(question("They've got some work %s <i>(do)</i>."))
+        questions.append(question("Peter gave up %s <i>(smoke)</i>."))
+        questions.append(question("He'd like %s <i>(fly)</i> an aeroplane."))
+        questions.append(question("I enjoy %s <i>(write)</i> picture postcards."))
+        questions.append(question("Do you know what %s <i>(do)</i> if there's a fire in the house?"))
+        questions.append(question("Avoid %s <i>(make)</i> silly mistakes."))
+        questions.append(question("My parents wanted me %s <i>(be)</i> home at 11 o'clock."))
+        questions.append(question("I dream about %s <i>(build)</i> a big house."))
+        questions.append(question("I'm hoping %s <i>(see)</i> Lisa."))
+        return render_template('gerund/B2.html', questions=questions, level=level)
+    elif level == "C1":
+        questions = []
+        questions.append(question("be bad %s + Gerund"))
+        questions.append(question("danger %s + Gerund"))
+        questions.append(question("be crazy %s + Gerund"))
+        questions.append(question("difficulty %s + Gerund"))
+        questions.append(question("be ashamed %s + Gerund"))
+        questions.append(question("idea %s + Gerund"))
+        questions.append(question("way %s + Gerund"))
+        questions.append(question("be fond %s + Gerund"))
+        questions.append(question("succeed %s + Gerund"))
+        questions.append(question("accused %s + Gerund"))
+        return render_template('gerund/C1.html', questions=questions, level=level)
+
 
     return render_template('gerund/gerund.html')
+@app.route('/api/submit/<category>/<level>', methods=['POST'])
+@login_required
+def submit(category, level):
+    if request.method == 'POST':
+        #do stuff to test and store results
+        data = dict((key, request.form.get(key)) for key in request.form.keys())
+        return jsonify(data)
+
+class question():
+    def __init__(self, questionstring, options=None):
+        self.question = questionstring
+        self.options = options
 
 
 # Section for Halil
@@ -120,3 +197,4 @@ def sql():
     print(query_db("SELECT u.username FROM users as u where u.username=?", ('eelco', )))
     print(g.user)
     return jsonify(query_db("SELECT * FROM users"))
+    return jsonify(init_db())
