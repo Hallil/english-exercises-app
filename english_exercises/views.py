@@ -74,7 +74,7 @@ def login():
                 return redirect(url_for('home'))
             else: 
                 print("login else")
-                return url_for('home', username=session['username'])
+                return url_for('home')
         else:
             return "access denied"
     else:
@@ -98,7 +98,7 @@ def gerund(level=None):
     if level == "A1":
         return render_template('gerund/A1.html')
 
-    return "Gerund Exercises :DDDDDD"
+    return render_template('gerund/gerund.html')
 
 
 # Section for Halil
