@@ -21,13 +21,11 @@ class LoginTests(unittest.TestCase):
         self.assertEqual(None, get_user('No', 'user'))
 
     def test_check_login(self):
-        self.assertTrue(check_login('Foo', 'bar'))
-        self.assertFalse(check_login('bar', 'baz'))
+        self.assertTrue(user_exists('Foo', 'bar'))
+        self.assertFalse(user_exists('bar', 'baz'))
 
     def test_register_user(self):
-        
-
-
+        pass
 
 if __name__ == '__main__':
     unittest.main()
