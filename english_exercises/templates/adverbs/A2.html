@@ -1,15 +1,38 @@
-{% extends "adverbs/adverbs.html" %}
+{% extends 'gerund/gerund.html' %}
 {% block form %}
+<style>
+    input.form-control { width: 20px; }
+</style>
+    {% macro input(name, value='', type='text', size=5) -%}
+        <input type="{{ type }}" name="{{ name }}" value="{{ value|e }}" size="{{ size }}" class="form-control">
+    {%- endmacro %}
+    {% macro dropdown(options, id) -%}
+        <select class="form-control" id="{{ id }}">
+                <option default></option>
+            {% for op in options %}
+                <option>{{ op }}</option>
+            {% endfor %}
+        </select>
+    {%- endmacro %}
 
-<h1>A2</h1>
+<h2>C1</h2>
+<form action="/api/submit/gerund/A2" method="post">
+{% for q in questions %}
+    <div class="form-group form-inline">
+            {{- q.question |format(dropdown(q.options, loop.index), input(loop.index))|safe -}}
+    </div>
 
-<form action="" method="post">
-    <div class="form-group">
-    <label>Username:</label> <br />
-    <input type="text" name="username" required>
-</div>
-
-    <input type="submit" value="Submit" />
+{% endfor %}
+    <input type="submit">
 </form>
 
+
+"He is responsible %s %s the money. <i>(to collect)</i>"
+"She is used %s %s to bed late. <i>(to go)</i>"
+"He apologized %s %s late. <i>(to be)</i>"
+"Larry never worries %s %s friends. <i>(to make)</i>"
+"We are tired %s %s for the bus. <i> (to wait)</i>"
+"She insisted %s %s to her lawyer. <i>(to talk)</i>"
+"You should give %s %s you sister. <i>(to bully)</i>"
+"They are thinking %s %s to Italy. <i>(to move)</i>"
 {% endblock %}

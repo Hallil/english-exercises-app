@@ -1,19 +1,11 @@
 {% extends 'gerund/gerund.html' %}
 {% block form %}
-{% macro input(name, value='', type='text', size=5) -%}
-    <input type="{{ type }}" name="{{ name }}" value="{{ value|e }}" size="{{ size }}">
-{%- endmacro %}
-<h2>A2</h2>
-<form action="/api/submit/gerund/A2" method="post">
-{% for q in questions %}
-    <div class="form-group">
-            {{- q.question |format(input(loop.index))|safe -}}
-    </div>
 
-{% endfor %}
+<h3>A2</h3>
+<form action="/api/submit/gerund/A2" method="post">
+    {% include 'gerund/dropdownandopen.html' %}
+    <input type="text" name="level" value="{{ level }}" hidden/>
     <input type="submit">
 </form>
-
-
 
 {% endblock %}
