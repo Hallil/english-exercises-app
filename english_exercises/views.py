@@ -168,7 +168,7 @@ def gerund(level=None):
 @login_required
 def submit(category, level):
     if request.method == 'POST':
-        #do stuff to test and store results
+        #do stuff to test and store results met user in gedachte vanuit session['username']
         data = dict((key, request.form.get(key)) for key in request.form.keys())
         return jsonify(data)
 
