@@ -15,7 +15,5 @@ db_uri = 'sqlite:///{}'.format(db_path)
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 db = SQLAlchemy(app)
 
-from english_exercises.dbconnector import *
-#from english_exercises.dblayer import *
 import english_exercises.views
 import english_exercises.dblayer
