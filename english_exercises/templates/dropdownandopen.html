@@ -1,5 +1,5 @@
-{% from 'gerund/inputmacro.html' import input %}
-{% from 'gerund/dropdownmacro.html' import dropdown %}
+{% from 'inputmacro.html' import input %}
+{% from 'dropdownmacro.html' import dropdown %}
 {% for q in questions %}
     <div class="form-group form-inline">
             {{- q.question |format(dropdown(q.options, loop.index), input(loop.index))|safe -}}
