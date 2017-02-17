@@ -1,6 +1,6 @@
 import unittest
-from english_exercises.dblayer import *
-from english_exercises.models import *
+from english_exercises.authentication import get_user, register_user, user_exists
+from english_exercises.models import User
 from english_exercises import db
 
 class LoginTests(unittest.TestCase):
@@ -13,7 +13,9 @@ class LoginTests(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        db.session.delete(cls.user)
+        db.session.rollback()
+        db.session.query(User).delete()
+        db.session.commit()
 
     def test_get_user(self):
         self.assertEqual(self.user.username, get_user('Foo', 'bar').username)
@@ -24,8 +26,13 @@ class LoginTests(unittest.TestCase):
         self.assertTrue(user_exists('Foo', 'bar'))
         self.assertFalse(user_exists('bar', 'baz'))
 
+    def test_registered_user(self):
+        self.assertEqual(0,register_user('Foo', 'bar'))
+
     def test_register_user(self):
-        pass
+        self.assertEqual(1,register_user('new', 'user'))
+        self.assertEqual('new', db.session.query(User).filter_by(username='new').first().username)
+
 
 if __name__ == '__main__':
     unittest.main()

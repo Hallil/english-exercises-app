@@ -2,7 +2,7 @@ import english_exercises
 from english_exercises import app
 from functools import wraps
 from flask import render_template, make_response, request, session, escape, url_for, redirect, current_app, jsonify, json, abort, flash
-from english_exercises.dblayer import *
+from english_exercises.authentication import *
 
 #decorator function
 def login_required(f):
@@ -16,31 +16,27 @@ def login_required(f):
 
 @app.route("/", methods=['GET'])
 def home():
-    #flash("Welcome!")
     return render_template('index.html')
 
-# Section for Rene
 @app.route("/adverbs")
 @app.route("/adverbs/<level>")
 @login_required
 def adverbs(level=None):
-    if not session.get('logged_in'):
-        abort(401)
-        if level != None:
-            if level == 'A1':
-                return render_template('adverbs/A1.html')
-            elif level == 'A2':
-                return render_template('adverbs/A2.html')
-            elif level == 'B1':
-                return render_template('adverbs/B1.html')
-            elif level == 'B2':
-                return render_template('adverbs/B2.html')
-            elif level == 'C1':
-                    return render_template('adverbs/C1.html')
-            else:
-                return render_template('adverbs/adverbs.html')
+    if level != None:
+        if level == 'A1':
+            return render_template('adverbs/A1.html')
+        elif level == 'A2':
+            return render_template('adverbs/A2.html')
+        elif level == 'B1':
+            return render_template('adverbs/B1.html')
+        elif level == 'B2':
+            return render_template('adverbs/B2.html')
+        elif level == 'C1':
+            return render_template('adverbs/C1.html')
         else:
             return render_template('adverbs/adverbs.html')
+    else:
+        return render_template('adverbs/adverbs.html')
 
 
 @app.route("/register", methods=['POST', 'GET'])
@@ -65,7 +61,6 @@ def register():
 def login():
     if request.method == 'POST':
         if user_exists(request.form['username'], request.form['password']):
-            n = str(request.form['next'])
             print("request.form['next']="+request.form['next'])
             session['logged_in'] = True
             session['username'] = request.form['username']
