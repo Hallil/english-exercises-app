@@ -8,6 +8,11 @@ class FlaskrTestCase(unittest.TestCase):
 
     def test_not_logged_in(self):
         self.assertEqual(302, self.app.get('/adverbs').status_code)
+        self.assertEqual(302, self.app.get('/adverbs/A1').status_code)
+        self.assertEqual(302, self.app.get('/adverbs/A2').status_code)
+        self.assertEqual(302, self.app.get('/adverbs/B1').status_code)
+        self.assertEqual(302, self.app.get('/adverbs/B2').status_code)
+        self.assertEqual(302, self.app.get('/adverbs/C1').status_code)
 
 
 if __name__ == '__main__':

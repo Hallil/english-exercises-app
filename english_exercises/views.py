@@ -1,5 +1,6 @@
 import english_exercises
 from english_exercises import app
+from english_exercises.level_access import calculate_score, allowed_in_A, allowed_in_B, allowed_in_C
 from functools import wraps
 from flask import render_template, make_response, request, session, escape, url_for, redirect, current_app, jsonify, json, abort, flash
 from english_exercises.authentication import *
@@ -23,18 +24,41 @@ def home():
 @login_required
 def adverbs(level=None):
     if level != None:
+        # A1
         if level == 'A1':
-            return render_template('adverbs/A1.html')
-        elif level == 'A2':
-            return render_template('adverbs/A2.html')
-        elif level == 'B1':
-            return render_template('adverbs/B1.html')
-        elif level == 'B2':
-            return render_template('adverbs/B2.html')
-        elif level == 'C1':
-            return render_template('adverbs/C1.html')
-        else:
-            return render_template('adverbs/adverbs.html')
+            if allowed_in_A(calculate_score(str(session['username']))):
+                return render_template('adverbs/A1.html')
+            else:
+                return render_template('adverbs/locked.html')
+
+        # A2
+        if level == 'A2':
+            if allowed_in_A(calculate_score(str(session['username']))):
+                return render_template('adverbs/A2.html')
+            else:
+                return render_template('adverbs/locked.html')
+
+
+        # B1
+        if level == 'B1':
+            if allowed_in_B(calculate_score(str(session['username']))):
+                return render_template('adverbs/B1.html')
+            else:
+                return render_template('adverbs/locked.html')
+
+        # B2
+        if level == 'B2':
+            if allowed_in_B(calculate_score(str(session['username']))):
+                return render_template('adverbs/B2.html')
+            else:
+                return render_template('adverbs/locked.html')
+
+        # C1
+        if level == 'C1':
+            if allowed_in_C(calculate_score(str(session['username']))):
+                return render_template('adverbs/C1.html')
+            else:
+                return render_template('adverbs/locked.html')
     else:
         return render_template('adverbs/adverbs.html')
 
