@@ -1,4 +1,3 @@
-from flask_sqlalchemy import SQLAlchemy
 from . import db
 
 
@@ -15,9 +14,9 @@ class User(db.Model):
         self.amountCorrect = amountCorrect
         self.amountIncorrect = amountIncorrect
 
-
     def __repr__(self):
         return '<User %r>' % self.username
+
 
 class OpenQuestion(db.Model):
     id = db.Column(db.Integer, primary_key=True)

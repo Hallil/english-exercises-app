@@ -1,6 +1,14 @@
 {% extends "adverbs/adverbs.html" %}
 {% block form %}
 
-<h1>A2</h1>
+<h1>{{level}}</h1>
+  <form action="/adverbs/{{level}}" method="POST">
+    {% for q in questions %}
+        <div class="form-group form-inline">
+                {{ q.question }} <input type="text" name="{{ q.id }}" />
+        </div>
+    {% endfor %}
+    <input type="submit" value="Submit"/>
+  </form>
 
 {% endblock %}

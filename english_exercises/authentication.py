@@ -1,8 +1,3 @@
-"""
-DB Abstraction layer
-"""
-
-import sqlite3
 from flask import g
 from english_exercises.models import User
 from english_exercises import db

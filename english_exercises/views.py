@@ -1,11 +1,12 @@
-import english_exercises
 from english_exercises import app
-from english_exercises.level_access import calculate_score, allowed_in_A, allowed_in_B, allowed_in_C
+from english_exercises.level_access import calculate_score, allowed_in_level
 from functools import wraps
-from flask import render_template, make_response, request, session, escape, url_for, redirect, current_app, jsonify, json, abort, flash
-from english_exercises.authentication import *
+from flask import render_template, request, session, url_for, redirect, jsonify, flash
+from english_exercises.models import OpenQuestion
+from english_exercises.authentication import user_exists, register_user
+from english_exercises.db_layer import process_answers
 
-#decorator function
+
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -15,52 +16,30 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+
 @app.route("/", methods=['GET'])
 def home():
     return render_template('index.html')
 
+
 @app.route("/adverbs")
-@app.route("/adverbs/<level>")
+@app.route("/adverbs/<level>", methods=['GET', 'POST'])
 @login_required
 def adverbs(level=None):
-    if level != None:
-        # A1
-        if level == 'A1':
-            if allowed_in_A(calculate_score(str(session['username']))):
-                return render_template('adverbs/A1.html')
-            else:
-                return render_template('adverbs/locked.html')
-
-        # A2
-        if level == 'A2':
-            if allowed_in_A(calculate_score(str(session['username']))):
-                return render_template('adverbs/A2.html')
-            else:
-                return render_template('adverbs/locked.html')
-
-
-        # B1
-        if level == 'B1':
-            if allowed_in_B(calculate_score(str(session['username']))):
-                return render_template('adverbs/B1.html')
-            else:
-                return render_template('adverbs/locked.html')
-
-        # B2
-        if level == 'B2':
-            if allowed_in_B(calculate_score(str(session['username']))):
-                return render_template('adverbs/B2.html')
-            else:
-                return render_template('adverbs/locked.html')
-
-        # C1
-        if level == 'C1':
-            if allowed_in_C(calculate_score(str(session['username']))):
-                return render_template('adverbs/C1.html')
-            else:
-                return render_template('adverbs/locked.html')
-    else:
+    if level == None:
         return render_template('adverbs/adverbs.html')
+    else:
+        if request.method == 'GET':
+            if allowed_in_level(level, calculate_score(session['username'])):
+                open_questions = OpenQuestion.query.filter_by(category='Adverbs').filter_by(level=level).all()
+                return render_template('adverbs/' + level + '.html', level=level, questions=open_questions)
+            else:
+                return render_template('adverbs/locked.html')
+        if request.method == 'POST':
+            process_answers(request, level, session['username'])
+            return render_template('adverbs/adverbs.html')
+        else:
+            return render_template('adverbs/adverbs.html')
 
 
 @app.route("/register", methods=['POST', 'GET'])

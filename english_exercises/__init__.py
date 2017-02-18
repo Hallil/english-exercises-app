@@ -1,8 +1,6 @@
 import os
-from os import environ
 from flask import *
 from flask_sqlalchemy import SQLAlchemy
-import sqlite3
 
 app = Flask(__name__)
 app.config.from_object(__name__)

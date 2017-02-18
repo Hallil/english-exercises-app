@@ -1,31 +1,32 @@
-from . import db
 from .models import User
 
 
 def calculate_score(username):
-    return get_correct_answers(username) - get_incorrect_answers(username)
-
-def get_correct_answers(userName):
-    return User.query.filter(User.username == userName).first().amountCorrect
-
-def get_incorrect_answers(userName):
-    return User.query.filter(User.username == userName).first().amountIncorrect
-
-
-def allowed_in_A(score):
-    if score > 0:
-        return True
+    ratio = get_correct_answers(username) / (get_correct_answers(username) + get_incorrect_answers(username))
+    score = get_correct_answers(username) * ratio
+    if score < 0:
+        return 0
     else:
-        return False
+        return round(score, 2)
 
-def allowed_in_B(score):
-    if score > 10:
-        return True
-    else:
-        return False
+def get_correct_answers(user_name):
+    return User.query.filter_by(username=user_name).first().amountCorrect
 
-def allowed_in_C(score):
-    if score > 20:
+
+def get_incorrect_answers(user_name):
+    return User.query.filter_by(username=user_name).first().amountIncorrect
+
+
+def allowed_in_level(level, score):
+    if 'A' in level:
         return True
-    else:
-        return False
+    if 'B' in level:
+        if score > 10:
+            return True
+        else:
+            return False
+    if 'C' in level:
+        if score > 20:
+            return True
+        else:
+            return False
