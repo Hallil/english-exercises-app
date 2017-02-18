@@ -6,7 +6,7 @@ from english_exercises import db
 
 class AuthenticationTests(unittest.TestCase):
 
-    user = User('Foo', 'bar', 10, 10)
+    user = User('Foo', 'bar', 10, 10, 5)
 
     @classmethod
     def setUpClass(cls):

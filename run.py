@@ -19,7 +19,7 @@ def fill_adverbs():
     db.session.add(OpenQuestion("He (quick) reads a book:", "quickly", "Adverbs", "A1"))
     db.session.add(OpenQuestion("Mandy is a (pretty) girl:", "pretty", "Adverbs", "A1"))
     db.session.add(OpenQuestion("The class is (terrible) loud today:", "terribly", "Adverbs", "A1"))
-    db.session.add(OpenQuestion("Max is (good) a singer:", "good", "Adverbs", "A1"))
+    db.session.add(OpenQuestion("Max is a (good) singer:", "good", "Adverbs", "A1"))
     db.session.add(OpenQuestion("You can (easy) open this tin:", "easily", "Adverbs", "A1"))
 
     db.session.add(OpenQuestion("It's a (terrible) day today:", "terrible", "Adverbs", "A2"))

@@ -6,9 +6,9 @@ from english_exercises.models import User
 
 class LevelAccessTests(unittest.TestCase):
 
-    user_1 = User('Test_A', 'level_A', 1, 0)
-    user_2 = User('Test_B', 'level_A', 16, 7)
-    user_3 = User('Test_C', 'level_A', 22, 0)
+    user_1 = User('Test_A', 'level_A', 1, 0, 0)
+    user_2 = User('Test_B', 'level_A', 16, 7, 4)
+    user_3 = User('Test_C', 'level_A', 22, 0, 14)
 
     @classmethod
     def setUpClass(cls):

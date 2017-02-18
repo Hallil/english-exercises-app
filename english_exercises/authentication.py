@@ -13,7 +13,7 @@ def user_exists(userName, passWord):
 
 def register_user(userName, passWord):
     if user_exists(userName, passWord) is False:
-        new_user = User(userName, passWord, 0, 0)
+        new_user = User(userName, passWord, 0, 0, 0)
         db.session.add(new_user)
         db.session.commit()
         return 1

@@ -2,12 +2,15 @@ from .models import User
 
 
 def calculate_score(username):
-    ratio = get_correct_answers(username) / (get_correct_answers(username) + get_incorrect_answers(username))
-    score = get_correct_answers(username) * ratio
-    if score < 0:
+    if get_correct_answers(username) <= 0:
         return 0
     else:
-        return round(score, 2)
+        ratio = get_correct_answers(username) / (get_correct_answers(username) + get_incorrect_answers(username))
+        score = get_correct_answers(username) * ratio
+        if score < 0:
+            return 0
+        else:
+            return round(score, 2)
 
 
 def get_correct_answers(user_name):
