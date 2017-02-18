@@ -7,12 +7,14 @@ class User(db.Model):
     password = db.Column(db.String(80))
     amountCorrect = db.Column(db.Integer)
     amountIncorrect = db.Column(db.Integer)
+    score = db.Column(db.Integer)
 
-    def __init__(self, username, password, amountCorrect, amountIncorrect):
+    def __init__(self, username, password, amountCorrect, amountIncorrect, score):
         self.username = username
         self.password = password
         self.amountCorrect = amountCorrect
         self.amountIncorrect = amountIncorrect
+        self.score = score
 
     def __repr__(self):
         return '<User %r>' % self.username

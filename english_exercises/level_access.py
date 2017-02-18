@@ -9,6 +9,7 @@ def calculate_score(username):
     else:
         return round(score, 2)
 
+
 def get_correct_answers(user_name):
     return User.query.filter_by(username=user_name).first().amountCorrect
 

@@ -2,7 +2,7 @@ from english_exercises import app
 from english_exercises.level_access import calculate_score, allowed_in_level
 from functools import wraps
 from flask import render_template, request, session, url_for, redirect, jsonify, flash
-from english_exercises.models import OpenQuestion
+from english_exercises.models import OpenQuestion, User
 from english_exercises.authentication import user_exists, register_user
 from english_exercises.db_layer import process_answers
 
@@ -187,7 +187,7 @@ def nouns():
 @app.route("/results")
 @login_required
 def results():
-    return render_template('results.html')
+    return render_template('results.html', results=User.query.all())
 
 #is voor testen van db
 @app.route('/sql')
