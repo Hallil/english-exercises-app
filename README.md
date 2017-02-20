@@ -1,4 +1,4 @@
-# english-exercises
+# english-exercises-app
 
 English exercises Flask app
 
