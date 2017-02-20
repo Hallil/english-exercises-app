@@ -1,5 +1,4 @@
-import requests, requests_mock, unittest
-from flask import request
+import requests, unittest
 from english_exercises import db, app
 from english_exercises.db_layer import correct_answers_in_post, incorrect_answers_in_post, update_user_results
 from english_exercises.models import User
