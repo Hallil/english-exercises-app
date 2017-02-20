@@ -13,13 +13,7 @@ def init_db():
     db.session.commit()
 
 
-def clear_questions():
-    db.session.query(OpenQuestion).delete()
-    db.session.query(MultiQuestion).delete()
-    db.session.commit()
-
 def fill_adverbs():
-    clear_questions()
 
     db.session.add(OpenQuestion("He (quick) reads a book:", "quickly", "Adverbs", "A1"))
     db.session.add(OpenQuestion("Mandy is a (pretty) girl:", "pretty", "Adverbs", "A1"))
@@ -53,9 +47,9 @@ def fill_adverbs():
     db.session.commit()
 
 def fill_gerund():
-    
+
     #   A1
-    db.session.add(OpenQuestion("My friend is good %s playing volleyball.", "at", "Gerund", "A1"))
+    db.session.add(OpenQuestion("My friend is good %s playing volleyball", "at", "Gerund", "A1"))
     db.session.add(OpenQuestion("She complains %s bullying." , "about", "Gerund", "A1"))
     db.session.add(OpenQuestion("They are afraid %s losing the match.", "of", "Gerund", "A1"))
     db.session.add(OpenQuestion("She doesn't feel %s working on the computer.", "like", "Gerund", "A1"))

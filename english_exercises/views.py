@@ -38,8 +38,8 @@ def adverbs(level=None):
         if request.method == 'POST':
             update_user_results(
             session['username'],
-            correct_answers_in_post(request.form, level),
-            incorrect_answers_in_post(request.form, level)
+            correct_answers_in_post(request.form),
+            incorrect_answers_in_post(request.form)
             )
             return render_template('adverbs/adverbs.html')
         else:
@@ -114,15 +114,14 @@ def gerund(level=None):
         if request.method == 'POST':
             update_user_results(
             session['username'],
-            correct_answers_in_post(request.form, level),
-            incorrect_answers_in_post(request.form, level)
+            correct_answers_in_post(request.form),
+            incorrect_answers_in_post(request.form)
             )
             return render_template('gerund/gerund.html')
         else:
             return render_template('gerund/gerund.html')
-
-
     return render_template('gerund/gerund.html')
+    
 @app.route('/api/submit/<category>/<level>', methods=['POST'])
 @login_required
 def submit(category, level):

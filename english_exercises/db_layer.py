@@ -3,16 +3,26 @@ from english_exercises.models import User, OpenQuestion
 from english_exercises.level_access import calculate_score
 
 
+def correct_answers_in_post(request):
+    correct_answer_count = 0
+    for key, value in request.items():
+        correct_answer = find_answer_object(key)
+        if correct_answer.answer == value:
+            correct_answer_count += 1
+    return correct_answer_count
 
 
-def correct_answers_in_post(request, level):
-    questions = OpenQuestion.query.filter_by(level=level).all()
-    return len(list(filter(lambda q: request[str(q.id)] == q.answer, questions)))
+def incorrect_answers_in_post(request):
+    correct_answer_count = 0
+    for key, value in request.items():
+        correct_answer = find_answer_object(key)
+        if correct_answer.answer != value:
+            correct_answer_count += 1
+    return correct_answer_count
 
 
-def incorrect_answers_in_post(request, level):
-    questions = OpenQuestion.query.filter_by(level=level).all()
-    return len(list(filter(lambda q: request[str(q.id)] != q.answer, questions)))
+def find_answer_object(question_id):
+    return OpenQuestion.query.filter_by(id=question_id).first()
 
 
 def update_user_results(user_name, correct, incorrect):

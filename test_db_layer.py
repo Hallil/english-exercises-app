@@ -23,8 +23,8 @@ class DatabaseLayerTests(unittest.TestCase):
         db.session.commit()
 
     def test_allowed_in_level(self):
-        self.assertEqual(1, correct_answers_in_post(self.params, 'A1'))
-        self.assertEqual(4, incorrect_answers_in_post(self.params, 'A1'))
+        self.assertEqual(1, correct_answers_in_post(self.params))
+        self.assertEqual(4, incorrect_answers_in_post(self.params))
 
     def test_update_user_results(self):
         update_user_results('Test_A', 5, 5)
