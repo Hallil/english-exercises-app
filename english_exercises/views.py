@@ -4,7 +4,7 @@ from functools import wraps
 from flask import render_template, request, session, url_for, redirect, jsonify, flash
 from english_exercises.models import OpenQuestion, User
 from english_exercises.authentication import user_exists, register_user
-from english_exercises.db_layer import process_answers
+from english_exercises.db_layer import correct_answers_in_post, incorrect_answers_in_post, update_user_results
 
 
 def login_required(f):
@@ -36,7 +36,11 @@ def adverbs(level=None):
             else:
                 return render_template('adverbs/locked.html')
         if request.method == 'POST':
-            process_answers(request, level, session['username'])
+            update_user_results(
+            session['username'],
+            correct_answers_in_post(request.form, level),
+            incorrect_answers_in_post(request.form, level)
+            )
             return render_template('adverbs/adverbs.html')
         else:
             return render_template('adverbs/adverbs.html')

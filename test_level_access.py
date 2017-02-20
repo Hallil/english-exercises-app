@@ -20,6 +20,7 @@ class LevelAccessTests(unittest.TestCase):
     def tearDownClass(cls):
         db.session.rollback()
         db.session.query(User).delete()
+        db.session.commit()
 
     def test_allowed_in_level(self):
         self.assertTrue(allowed_in_level('A', 0))
