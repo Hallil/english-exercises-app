@@ -13,12 +13,12 @@ def correct_answers_in_post(request):
 
 
 def incorrect_answers_in_post(request):
-    correct_answer_count = 0
+    incorrect_answer_count = 0
     for key, value in request.items():
         correct_answer = find_answer_object(key)
         if correct_answer.answer != value:
-            correct_answer_count += 1
-    return correct_answer_count
+            incorrect_answer_count += 1
+    return incorrect_answer_count
 
 
 def find_answer_object(question_id):
