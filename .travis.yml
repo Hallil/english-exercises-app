@@ -5,4 +5,4 @@ install: "pip3 install -r requirements.txt"
 script:
  - "python3 test_authentication.py"
  - "python3 test_level_access.py"
- - "python3 test_views.py
+ - "python3 test_views.py"
