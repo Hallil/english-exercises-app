@@ -3,6 +3,6 @@ python:
   - "3.5"
 install: "pip3 install -r requirements.txt"
 script:
-  - "python3 test_authentication.py"
+  - "python3 login_tests.py"
   - "python3 test_level_access.py"
   - "python3 test_views.py
