@@ -59,7 +59,7 @@ class MultiQuestion(db.Model):
     answer = db.Column(db.String(80))
     multiplechoiceAnswer = db.Column(db.Integer)
 
-    def __init__(self, category, level, question, answer, multiplechoiceAnswer):
+    def __init__(self, question, multiplechoiceAnswer, answer, category, level):
         self.category = category
         self.level = level
         self.question = question

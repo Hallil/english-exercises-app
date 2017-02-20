@@ -2,7 +2,7 @@
 {% from 'dropdownmacro.html' import dropdown %}
 {% for q in questions %}
     <div class="form-group form-inline">
-            {{- q.question |format(dropdown(q.options, loop.index), input(loop.index))|safe -}}
+            {{- q.question |format(dropdown(q.options, q.id), input(q.id))|safe -}}
     </div>
 
 {% endfor %}

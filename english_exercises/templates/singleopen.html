@@ -2,7 +2,7 @@
 
 {% for q in questions %}
     <div class="form-group form-inline">
-            {{- q.question |format(input(loop.index))|safe -}}
+            {{- q.question |format(input(q.id))|safe -}}
     </div>
 {% endfor %}
     
