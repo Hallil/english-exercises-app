@@ -1,7 +1,7 @@
 import english_exercises
 import unittest
 
-class FlaskrTestCase(unittest.TestCase):
+class ViewsTestCase(unittest.TestCase):
 
     client = english_exercises.app.test_client()
 

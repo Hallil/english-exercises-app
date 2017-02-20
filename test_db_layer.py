@@ -5,7 +5,7 @@ from english_exercises.db_layer import correct_answers_in_post, incorrect_answer
 from english_exercises.models import User
 
 
-class LevelAccessTests(unittest.TestCase):
+class DatabaseLayerTests(unittest.TestCase):
 
     user_1 = User('Test_A', 'level_A', 1, 0, 0)
     params =  {'1': 'quickly', '2': 'quickly', '3': 'quickly', '4': 'quickly', '5': 'quickly'}
