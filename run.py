@@ -13,12 +13,13 @@ def init_db():
     db.session.commit()
 
 def fill_nouns():
-    # A-1
+    # A
     db.session.add(OpenQuestion("I don't have much ..", "work", "Nouns", "A1"))
     db.session.add(OpenQuestion("There are a lot of ..", "chair", "Nouns", "A1"))
     db.session.add(OpenQuestion("The farmer loaded his cart with .. of fresh vegetables", "box", "Nouns", "A1"))
     db.session.add(OpenQuestion("There are many ..", "beaches", "Nouns", "A1"))
     db.session.add(OpenQuestion("Do you like this kind of ..", "music", "Nouns", "A1"))
+    db.session.commit()
 
 def fill_adverbs():
 
@@ -119,6 +120,7 @@ if __name__ == '__main__':
         init_db()
         fill_adverbs()
         fill_gerund()
+        fill_nouns()
 
     except ValueError:
         PORT = 5555

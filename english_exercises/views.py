@@ -132,9 +132,28 @@ def submit(category, level):
 
 # Section for Halil
 @app.route("/nouns")
+@app.route('/nouns/<level>', methods=['GET', 'POST'])
 @login_required
-def nouns():
-    return "Nouns Exercises :DDDDDD"
+def nouns(level=None):
+    if level == None:
+        return render_template('nouns/nouns.html')
+    else:
+        if request.method == 'GET':
+            if allowed_in_level(level, calculate_score(session['username'])):
+                questions = OpenQuestion.query.filter_by(category='Nouns').filter_by(level=level).all()
+                return render_template('nouns/' + level + '.html', level=level, questions=questions)
+            else:
+                return render_template('nouns/locked.html')
+        if request.method == 'POST':
+            update_user_results(
+            session['username'],
+            correct_answers_in_post(request.form),
+            incorrect_answers_in_post(request.form)
+            )
+            return render_template('nouns/nouns.html')
+        else:
+            return render_template('nouns/nouns.html')
+
 
 @app.route("/results")
 @login_required
@@ -144,7 +163,7 @@ def results():
 #is voor testen van db
 @app.route('/sql')
 def sql():
-    print(query_db("SELECT u.username FROM users as u where u.username=?", ('eelco', )))
+    print(query_db("SELECT u.username FROM users as u where u.username=?", ('Halil', )))
     print(g.user)
     return jsonify(query_db("SELECT * FROM users"))
     return jsonify(init_db())
