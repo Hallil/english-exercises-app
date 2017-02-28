@@ -1,20 +1,26 @@
-{% extends 'exercises/index.html' %}
-{% block 'body' %}
-    <nav class="navbar navbar-default">
-        <ul class="nav navbar-nav">
-            <li><a href="A1">A1</a></li>
-            <li><a href="A2">A2</a></li>
-            <li><a href="B1">B1</a></li>
-            <li><a href="B2">B2</a></li>
-            <li><a href="C1">C1</a></li>
-
-        </ul>
-    </nav>
-    <div class="row">
-        <div class="col-xs-12 center">
-            {% block 'form' %}
-            {% endblock %}
-        </div>
+{% extends 'index.html' %}
+{% block body %}
+<div class="row">
+    <div class="col-xs-2 center"></div>
+    <div class="col-xs-8 center">
+        <nav class="navbar navbar-inverse">
+            <ul class="nav navbar-nav">
+                <li><a href="{{ url_for('nouns') }}/A1">A1</a></li>
+                <li><a href="{{ url_for('nouns') }}/A2">A2</a></li>
+                <li><a href="{{ url_for('nouns') }}/B1">B1</a></li>
+                <li><a href="{{ url_for('nouns') }}/B2">B2</a></li>
+                <li><a href="{{ url_for('nouns') }}/C1">C1</a></li>
+            </ul>
+        </nav>
     </div>
+    <div class="col-xs-2 center"></div>
+</div>
+<div class="row">
+    <style>
+        input.form-control { width: 20px; }
+    </style>
+    {% block form %}
+    {% endblock %}
+</div>
 
 {% endblock %}
