@@ -9,9 +9,16 @@ def init_db():
     db.session.add(User('Level_A', 'Level_A', 1, 0, 2))
     db.session.add(User('Level_B', 'Level_B', 16, 7, 3))
     db.session.add(User('Level_C', 'Level_C', 30, 4, 6))
-    db.session.add(User('eelco', 'eelco', 0, 0, 0))
+    db.session.add(User('Halil', 'Halil', 0, 0, 0))
     db.session.commit()
 
+def fill_nouns():
+    # A-1
+    db.session.add(OpenQuestion("I don't have much ..", "work", "Nouns", "A1"))
+    db.session.add(OpenQuestion("There are a lot of ..", "chair", "Nouns", "A1"))
+    db.session.add(OpenQuestion("The farmer loaded his cart with .. of fresh vegetables", "box", "Nouns", "A1"))
+    db.session.add(OpenQuestion("There are many ..", "beaches", "Nouns", "A1"))
+    db.session.add(OpenQuestion("Do you like this kind of ..", "music", "Nouns", "A1"))
 
 def fill_adverbs():
 
