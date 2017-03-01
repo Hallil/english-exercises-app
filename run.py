@@ -25,6 +25,19 @@ def fill_nouns():
     db.session.add(OpenQuestion("The class is loud .. (today)", "today", "Nouns", "A2"))
     db.session.add(OpenQuestion("Our sincere .. (condolence)", "condolences", "Nouns", "A2"))
     db.session.add(OpenQuestion("I have already .. a lot in Barcelona.", "seen", "Nouns", "A2"))
+
+    # B
+    db.session.add(OpenQuestion("He quickly reads a .. (book)", "book", "Nouns", "A2"))
+    db.session.add(OpenQuestion("Mandy is a pretty .. (girl)", "girl", "Nouns", "A2"))
+    db.session.add(OpenQuestion("The class is loud .. (today)", "today", "Nouns", "A2"))
+    db.session.add(OpenQuestion("Our sincere .. (condolence)", "condolences", "Nouns", "A2"))
+    db.session.add(OpenQuestion("I have already .. a lot in Barcelona.", "seen", "Nouns", "A2"))
+
+    db.session.add(OpenQuestion("He quickly reads a .. (book)", "book", "Nouns", "A2"))
+    db.session.add(OpenQuestion("Mandy is a pretty .. (girl)", "girl", "Nouns", "A2"))
+    db.session.add(OpenQuestion("The class is loud .. (today)", "today", "Nouns", "A2"))
+    db.session.add(OpenQuestion("Our sincere .. (condolence)", "condolences", "Nouns", "A2"))
+    db.session.add(OpenQuestion("I have already .. a lot in Barcelona.", "seen", "Nouns", "A2"))
     db.session.commit()
 
 def fill_adverbs():
