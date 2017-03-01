@@ -7,12 +7,12 @@ class ViewsTestCase(unittest.TestCase):
 
 
     def test_not_logged_in(self):
-        self.assertEqual(302, self.client.get('/adverbs').status_code)
-        self.assertEqual(302, self.client.get('/adverbs/A1').status_code)
-        self.assertEqual(302, self.client.get('/adverbs/A2').status_code)
-        self.assertEqual(302, self.client.get('/adverbs/B1').status_code)
-        self.assertEqual(302, self.client.get('/adverbs/B2').status_code)
-        self.assertEqual(302, self.client.get('/adverbs/C1').status_code)
+        self.assertEqual(302, self.client.get('/nouns').status_code)
+        self.assertEqual(302, self.client.get('/nouns/A1').status_code)
+        self.assertEqual(302, self.client.get('/nouns/A2').status_code)
+        self.assertEqual(302, self.client.get('/nouns/B1').status_code)
+        self.assertEqual(302, self.client.get('/nouns/B2').status_code)
+        self.assertEqual(302, self.client.get('/nouns/C1').status_code)
 
 
 if __name__ == '__main__':

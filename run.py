@@ -14,11 +14,17 @@ def init_db():
 
 def fill_nouns():
     # A
-    db.session.add(OpenQuestion("I don't have much ..", "work", "Nouns", "A1"))
-    db.session.add(OpenQuestion("There are a lot of ..", "chair", "Nouns", "A1"))
-    db.session.add(OpenQuestion("The farmer loaded his cart with .. of fresh vegetables", "box", "Nouns", "A1"))
-    db.session.add(OpenQuestion("There are many ..", "beaches", "Nouns", "A1"))
-    db.session.add(OpenQuestion("Do you like this kind of ..", "music", "Nouns", "A1"))
+    db.session.add(OpenQuestion("I don't have much .. (work)", "work", "Nouns", "A1"))
+    db.session.add(OpenQuestion("There are a lot of .. (chair)", "chair", "Nouns", "A1"))
+    db.session.add(OpenQuestion("The farmer loaded his cart with .. (box) of fresh vegetables", "box", "Nouns", "A1"))
+    db.session.add(OpenQuestion("There are many .. (beach)", "beaches", "Nouns", "A1"))
+    db.session.add(OpenQuestion("Do you like this kind of .. (music)", "music", "Nouns", "A1"))
+
+    db.session.add(OpenQuestion("He quickly reads a .. (book)", "book", "Nouns", "A2"))
+    db.session.add(OpenQuestion("Mandy is a pretty .. (girl)", "girl", "Nouns", "A2"))
+    db.session.add(OpenQuestion("The class is loud .. (today)", "today", "Nouns", "A2"))
+    db.session.add(OpenQuestion("Our sincere .. (condolence)", "condolences", "Nouns", "A2"))
+    db.session.add(OpenQuestion("I have already .. a lot in Barcelona.", "seen", "Nouns", "A2"))
     db.session.commit()
 
 def fill_adverbs():
