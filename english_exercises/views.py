@@ -161,9 +161,9 @@ def results():
     return render_template('results.html', results=User.query.all())
 
 #is voor testen van db
-# @app.route('/sql')
-# def sql():
-#     print(query_db("SELECT u.username FROM users as u where u.username=?", ('Halil', )))
-#     print(g.user)
-#     return jsonify(query_db("SELECT * FROM users"))
-#     return jsonify(init_db())
+@app.route('/sql')
+def sql():
+    print(query_db("SELECT u.username FROM users as u where u.username=?", ('Halil', )))
+    print(g.user)
+    return jsonify(query_db("SELECT * FROM users"))
+    return jsonify(init_db())
