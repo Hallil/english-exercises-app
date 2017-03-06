@@ -6,11 +6,10 @@ from english_exercises.models import User
 
 class DatabaseLayerTests(unittest.TestCase):
 
-    user_1 = User('Test_A', 'level_A', 1, 4, 0.25)
-    params =  {'1': 'work', '2': 'work', '3': 'work', '4': 'work', '5': 'work'}
-    app.testing = True
+    user_1 = User('Test_A', 'level_A', 1, 0, 0)
+    params =  {'1': 'quickly', '2': 'quickly', '3': 'quickly', '4': 'quickly', '5': 'quickly'}
     client = app.test_client()
-    request = client.post('/nouns', environ_base={'HTTP_USER_AGENT': 'Chrome, etc'})
+    request = client.post('/adverbs', environ_base={'HTTP_USER_AGENT': 'Chrome, etc'})
     request.params = params
 
     @classmethod
@@ -28,7 +27,7 @@ class DatabaseLayerTests(unittest.TestCase):
         self.assertEqual(4, incorrect_answers_in_post(self.params))
 
     def test_update_user_results(self):
-        update_user_results('Test_A', 2, 3)
+        update_user_results('Test_A', 5, 5)
         self.assertEqual(6, db.session.query(User).filter_by(username='Test_A').first().amountCorrect)
         self.assertEqual(5, db.session.query(User).filter_by(username='Test_A').first().amountIncorrect)
 
