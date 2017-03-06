@@ -14,30 +14,37 @@ def init_db():
 
 def fill_nouns():
     # A
-    db.session.add(OpenQuestion("I don't have much .. (work)", "work", "Nouns", "A1"))
-    db.session.add(OpenQuestion("There are a lot of .. (chair)", "chair", "Nouns", "A1"))
-    db.session.add(OpenQuestion("The farmer loaded his cart with .. (box) of fresh vegetables", "box", "Nouns", "A1"))
-    db.session.add(OpenQuestion("There are many .. (beach)", "beaches", "Nouns", "A1"))
-    db.session.add(OpenQuestion("Do you like this kind of .. (music)", "music", "Nouns", "A1"))
+    db.session.add(OpenQuestion("I don't have much .. (work).", "work", "Nouns", "A1"))
+    db.session.add(OpenQuestion("There are a lot of .. (chair).", "chair", "Nouns", "A1"))
+    db.session.add(OpenQuestion("The farmer loaded his cart with .. (box) of fresh vegetables.", "box", "Nouns", "A1"))
+    db.session.add(OpenQuestion("There are many .. (beach).", "beaches", "Nouns", "A1"))
+    db.session.add(OpenQuestion("Do you like this kind of .. (music).", "music", "Nouns", "A1"))
 
-    db.session.add(OpenQuestion("He quickly reads a .. (book)", "book", "Nouns", "A2"))
-    db.session.add(OpenQuestion("Mandy is a pretty .. (girl)", "girl", "Nouns", "A2"))
-    db.session.add(OpenQuestion("The class is loud .. (today)", "today", "Nouns", "A2"))
-    db.session.add(OpenQuestion("Our sincere .. (condolence)", "condolences", "Nouns", "A2"))
-    db.session.add(OpenQuestion("I have already .. a lot in Barcelona.", "seen", "Nouns", "A2"))
+    db.session.add(OpenQuestion("He quickly reads a .. (book).", "book", "Nouns", "A2"))
+    db.session.add(OpenQuestion("Mandy is a pretty .. (girl).", "girl", "Nouns", "A2"))
+    db.session.add(OpenQuestion("The class is loud .. (today).", "today", "Nouns", "A2"))
+    db.session.add(OpenQuestion("Our sincere .. (condolence.)", "condolences", "Nouns", "A2"))
+    db.session.add(OpenQuestion("I have already .. (see) a lot in Barcelona.", "seen", "Nouns", "A2"))
 
     # B
-    db.session.add(OpenQuestion("He quickly reads a .. (book)", "book", "Nouns", "A2"))
-    db.session.add(OpenQuestion("Mandy is a pretty .. (girl)", "girl", "Nouns", "A2"))
-    db.session.add(OpenQuestion("The class is loud .. (today)", "today", "Nouns", "A2"))
-    db.session.add(OpenQuestion("Our sincere .. (condolence)", "condolences", "Nouns", "A2"))
-    db.session.add(OpenQuestion("I have already .. a lot in Barcelona.", "seen", "Nouns", "A2"))
+    db.session.add(OpenQuestion("I cannot come to both of your .. (party).", "parties", "Nouns", "B1"))
+    db.session.add(OpenQuestion("I wish you strength in these difficult .. (time).", "times", "Nouns", "B1"))
+    db.session.add(OpenQuestion("What time shall we meet .. (tonight).", "tonight", "Nouns", "B1"))
+    db.session.add(OpenQuestion("Do you have .. (time) next Monday?", "time", "Nouns", "B1"))
+    db.session.add(OpenQuestion("I heared a lot about mister Berghuis last .. (week).", "heared", "Nouns", "B1"))
 
-    db.session.add(OpenQuestion("He quickly reads a .. (book)", "book", "Nouns", "A2"))
-    db.session.add(OpenQuestion("Mandy is a pretty .. (girl)", "girl", "Nouns", "A2"))
-    db.session.add(OpenQuestion("The class is loud .. (today)", "today", "Nouns", "A2"))
-    db.session.add(OpenQuestion("Our sincere .. (condolence)", "condolences", "Nouns", "A2"))
-    db.session.add(OpenQuestion("I have already .. a lot in Barcelona.", "seen", "Nouns", "A2"))
+    db.session.add(OpenQuestion("Would you like to have a drink in the pub to .. (celebration)", "celebrate", "Nouns", "B2"))
+#    db.session.add(OpenQuestion("Mandy is a pretty .. (girl)", "girl", "Nouns", "B2"))
+    db.session.add(OpenQuestion("The class is loud .. (today)", "today", "Nouns", "B2"))
+    db.session.add(OpenQuestion("Our sincere .. (condolence)", "condolences", "Nouns", "B2"))
+    db.session.add(OpenQuestion("I have already .. a lot in Barcelona.", "seen", "Nouns", "B2"))
+
+    # C
+    db.session.add(OpenQuestion("He quickly reads a .. (book)", "book", "Nouns", "C1"))
+    db.session.add(OpenQuestion("Mandy is a pretty .. (girl)", "girl", "Nouns", "C1"))
+    db.session.add(OpenQuestion("The class is loud .. (today)", "today", "Nouns", "C1"))
+    db.session.add(OpenQuestion("Our sincere .. (condolence)", "condolences", "Nouns", "C1"))
+    db.session.add(OpenQuestion("I have already .. a lot in Barcelona.", "seen", "Nouns", "C1"))
     db.session.commit()
 
 def fill_adverbs():
