@@ -6,8 +6,8 @@ from english_exercises.models import User, OpenQuestion, MultiQuestion
 def init_db():
     db.drop_all()
     db.create_all()
-    db.session.add(User('Level_A', 'Level_A', 1, 0, 2))
-    db.session.add(User('Level_B', 'Level_B', 16, 7, 3))
+    db.session.add(User('User1', 'Level_A', 1, 0, 2))
+    db.session.add(User('User2', 'Level_B', 10, 5, 3))
     db.session.add(User('Level_C', 'Level_C', 30, 4, 6))
     db.session.add(User('Halil', 'Halil', 0, 0, 0))
     db.session.commit()
