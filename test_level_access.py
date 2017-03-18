@@ -28,12 +28,12 @@ class LevelAccessTests(unittest.TestCase):
         self.assertTrue(allowed_in_level('A', 20))
         self.assertTrue(allowed_in_level('A', 30))
         self.assertFalse(allowed_in_level('B', 0))
-        self.assertFalse(allowed_in_level('B', 10))
+        self.assertTrue(allowed_in_level('B', 10))
         self.assertTrue(allowed_in_level('B', 20))
-        self.assertTrue(allowed_in_level('B', 30))
+        self.assertTrue(allowed_in_level('B', 30)) ##
         self.assertFalse(allowed_in_level('C', 0))
         self.assertFalse(allowed_in_level('C', 10))
-        self.assertFalse(allowed_in_level('C', 20))
+        self.assertTrue(allowed_in_level('C', 20)) ##
         self.assertTrue(allowed_in_level('C', 30))
 
     def test_get_correct_answers(self):
