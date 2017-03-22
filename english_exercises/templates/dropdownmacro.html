@@ -1,8 +1,7 @@
 {% macro dropdown(options, id) -%}
-    <select class="form-control" id="{{ id }}">
-            <option default></option>
-        {% for op in options %}
-            <option>{{ op }}</option>
-        {% endfor %}
-    </select>
+<select name="{{ name }}" {{ extra|safe }}>
+    {%- for op in options %}
+    <option value="{{ op }}" {% if op in selected %}selected="selected"{% endif %}>{{ op }}</option>
+    {%- endfor %}
+</select>
 {%- endmacro %}

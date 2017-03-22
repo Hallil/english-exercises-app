@@ -14,30 +14,30 @@ def init_db():
 
 def fill_nouns():
     # A
-    db.session.add(OpenQuestion("I don't have much .. (work).", "work", "Nouns", "A1"))
-    db.session.add(OpenQuestion("There are a lot of .. (chair).", "chairs", "Nouns", "A1"))
-    db.session.add(OpenQuestion("The farmer loaded his cart with .. (box) of fresh vegetables.", "box", "Nouns", "A1"))
-    db.session.add(OpenQuestion("There are many .. (beach).", "beaches", "Nouns", "A1"))
-    db.session.add(OpenQuestion("Do you like this kind of .. (music).", "music", "Nouns", "A1"))
+    db.session.add(OpenQuestion("I don't have much %s (work).", "work", "Nouns", "A1"))
+    db.session.add(OpenQuestion("There are a lot of %s (chair).", "chairs", "Nouns", "A1"))
+    db.session.add(OpenQuestion("The farmer loaded his cart with %s (box) of fresh vegetables.", "box", "Nouns", "A1"))
+    db.session.add(OpenQuestion("There are many %s (beach).", "beaches", "Nouns", "A1"))
+    db.session.add(OpenQuestion("Do you like this kind of %s (music).", "music", "Nouns", "A1"))
 
-    db.session.add(OpenQuestion("He quickly reads a .. (book).", "book", "Nouns", "A2"))
-    db.session.add(OpenQuestion("Mandy is a pretty .. (girl).", "girl", "Nouns", "A2"))
-    db.session.add(OpenQuestion("The class is loud .. (today).", "today", "Nouns", "A2"))
-    db.session.add(OpenQuestion("Our sincere .. (condolence.)", "condolences", "Nouns", "A2"))
-    db.session.add(OpenQuestion("I have already .. (see) a lot in Barcelona.", "seen", "Nouns", "A2"))
+    db.session.add(OpenQuestion("He quickly reads a %s (book).", "book", "Nouns", "A2"))
+    db.session.add(OpenQuestion("Mandy is a pretty %s (girl).", "girl", "Nouns", "A2"))
+    db.session.add(OpenQuestion("The class is loud %s (today).", "today", "Nouns", "A2"))
+    db.session.add(OpenQuestion("Our sincere %s (condolence.)", "condolences", "Nouns", "A2"))
+    db.session.add(OpenQuestion("I have already %s (see) a lot in Barcelona.", "seen", "Nouns", "A2"))
 
     # B
-    db.session.add(OpenQuestion("I cannot come to both of your .. (party).", "parties", "Nouns", "B1"))
-    db.session.add(OpenQuestion("I wish you strength in these difficult .. (time).", "times", "Nouns", "B1"))
-    db.session.add(OpenQuestion("What time shall we meet .. (tonight).", "tonight", "Nouns", "B1"))
-    db.session.add(OpenQuestion("Do you have .. (time) next Monday?", "time", "Nouns", "B1"))
-    db.session.add(OpenQuestion("I heared a lot about mister Berghuis last .. (week).", "heared", "Nouns", "B1"))
+    db.session.add(MultiQuestion("I cannot come %s both of your %s (party).", "to", "parties", "Nouns", "B1"))
+    db.session.add(MultiQuestion("I wish you strength %s these difficult %s (time).", "in", "times", "Nouns", "B1"))
+    db.session.add(MultiQuestion("What time shall we meet %s the %s (tonight).", "at", "night", "Nouns", "B1"))
+    db.session.add(MultiQuestion("Do you have time %s %s (Monday)?", "next", "Monday", "Nouns", "B1"))
+    db.session.add(MultiQuestion("I heared a lot %s mister Berghuis last %s (week).", "about", "week", "Nouns", "B1"))
 
-    db.session.add(OpenQuestion("Would you like to have a drink in the pub to .. (celebration).", "celebrate", "Nouns", "B2"))
-    db.session.add(OpenQuestion("They are going to give you a lot of .. (information).", "information", "Nouns", "B2"))
-    db.session.add(OpenQuestion("She must make .. (progress).", "progress", "Nouns", "B2"))
-    db.session.add(OpenQuestion("I don't have much .. (luggage).", "luggage", "Nouns", "B2"))
-    db.session.add(OpenQuestion("There are a lot of .. (chair).", "chairs", "Nouns", "B2"))
+    db.session.add(OpenQuestion("Would you like to have a drink in the pub to %s (celebration).", "celebrate", "Nouns", "B2"))
+    db.session.add(OpenQuestion("They are going to give you a lot of %s (information).", "information", "Nouns", "B2"))
+    db.session.add(OpenQuestion("She must make %s (progress).", "progress", "Nouns", "B2"))
+    db.session.add(OpenQuestion("I don't have much %s (luggage).", "luggage", "Nouns", "B2"))
+    db.session.add(OpenQuestion("There are a lot of %s (chair).", "chairs", "Nouns", "B2"))
 
     # C
     db.session.add(OpenQuestion("Shakespeare's .. (work) are wunderful.", "works", "Nouns", "C1"))

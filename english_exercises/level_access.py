@@ -25,12 +25,12 @@ def allowed_in_level(level, score):
     if 'A' in level:
         return True
     if 'B' in level:
-        if score > 9:
+        if score > 5:
             return True
         else:
             return False
     if 'C' in level:
-        if score > 19:
+        if score > 9:
             return True
         else:
             return False

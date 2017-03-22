@@ -1,8 +1,8 @@
 {% from 'inputmacro.html' import input %}
 {% from 'dropdownmacro.html' import dropdown %}
+
 {% for q in questions %}
     <div class="form-group form-inline">
-            {{- q.question |format(dropdown(q.options, q.id), input(q.id))|safe -}}
+            {{- q.question |format(dropdown(options, q.id), input(q.id))|safe -}}
     </div>
-
 {% endfor %}

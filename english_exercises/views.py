@@ -115,7 +115,7 @@ def gerund(level=None):
             update_user_results(
             session['username'],
             correct_answers_in_post(request.form),
-            incorrect_answers_in_post(request.form)
+            incorrect_answers_in_post(request.form),
             )
             return render_template('gerund/gerund.html')
         else:
@@ -135,13 +135,18 @@ def submit(category, level):
 @app.route('/nouns/<level>', methods=['GET', 'POST'])
 @login_required
 def nouns(level=None):
+    options = ['to', 'in', 'at', 'next', 'about']
     if level == None:
         return render_template('nouns/nouns.html')
     else:
         if request.method == 'GET':
             if allowed_in_level(level, calculate_score(session['username'])):
-                questions = OpenQuestion.query.filter_by(category='Nouns').filter_by(level=level).all()
-                return render_template('nouns/' + level + '.html', level=level, questions=questions)
+                if level != "B1":
+                    questions = OpenQuestion.query.filter_by(category='Nouns').filter_by(level=level).all()
+                    return render_template('nouns/' + level + '.html', level=level, questions=questions)
+                else:
+                    questions = MultiQuestion.query.filter_by(category='Nouns').filter_by(level=level).all()
+                    return render_template('nouns/' + level + '.html', level=level, questions=questions, options=options)
             else:
                 return render_template('nouns/locked.html')
         if request.method == 'POST':
@@ -153,7 +158,7 @@ def nouns(level=None):
             return render_template('nouns/nouns.html')
         else:
             return render_template('nouns/nouns.html')
-
+    return render_template('nouns/nouns.html')
 
 @app.route("/results")
 @login_required
