@@ -30,7 +30,7 @@ def fill_nouns():
     db.session.add(MultiQuestion("I cannot come %s both of your %s (party).", "to", "parties", "Nouns", "B1"))
     db.session.add(MultiQuestion("I wish you strength %s these difficult %s (time).", "in", "times", "Nouns", "B1"))
     db.session.add(MultiQuestion("What time shall we meet %s the %s (tonight).", "at", "night", "Nouns", "B1"))
-    db.session.add(MultiQuestion("Do you have time %s %s (Monday)?", "next", "Monday", "Nouns", "B1"))
+    db.session.add(MultiQuestion("Do you %s time next %s (Monday)?", "have", "Monday", "Nouns", "B1"))
     db.session.add(MultiQuestion("I heared a lot %s mister Berghuis last %s (week).", "about", "week", "Nouns", "B1"))
 
     db.session.add(OpenQuestion("Would you like to have a drink in the pub to %s (celebration).", "celebrate", "Nouns", "B2"))
@@ -40,11 +40,11 @@ def fill_nouns():
     db.session.add(OpenQuestion("There are a lot of %s (chair).", "chairs", "Nouns", "B2"))
 
     # C
-    db.session.add(OpenQuestion("Shakespeare's .. (work) are wunderful.", "works", "Nouns", "C1"))
-    db.session.add(OpenQuestion("She hasn't got enough .. (experience).", "experience", "Nouns", "C1"))
-    db.session.add(OpenQuestion("You have to ask for .. (permission).", "permission", "Nouns", "C1"))
-    db.session.add(OpenQuestion("He's looking for a .. (job).", "job", "Nouns", "C1"))
-    db.session.add(OpenQuestion("I don't have much .. (luggage).", "luggage", "Nouns", "C1"))
+    db.session.add(MultiQuestion("Shakespeare's works %s %s (wunderful).", "are", "wunderful", "Nouns", "C1"))
+    db.session.add(MultiQuestion("She hasn't %s enough %s (experience).", "got", "experience", "Nouns", "C1"))
+    db.session.add(MultiQuestion("You have to ask %s %s (permission).", "for", "permission", "Nouns", "C1"))
+    db.session.add(MultiQuestion("He's looking %s a %s (job).", "for", "job", "Nouns", "C1"))
+    db.session.add(MultiQuestion("I don't %s much %s (luggage).", "have", "luggage", "Nouns", "C1"))
     db.session.commit()
 
 def fill_adverbs():

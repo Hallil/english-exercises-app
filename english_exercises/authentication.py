@@ -20,6 +20,5 @@ def register_user(userName, passWord):
     else:
         return 0
 
-
 def get_user(userName, passWord):
     return User.query.filter_by(username=userName).filter_by(password=passWord).first()

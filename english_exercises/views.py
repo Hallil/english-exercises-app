@@ -135,7 +135,7 @@ def submit(category, level):
 @app.route('/nouns/<level>', methods=['GET', 'POST'])
 @login_required
 def nouns(level=None):
-    options = ['to', 'in', 'at', 'next', 'about']
+    options = ['to', 'in', 'at', 'have', 'about', 'are', 'got', 'for']
     if level == None:
         return render_template('nouns/nouns.html')
     else:
