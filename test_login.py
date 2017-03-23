@@ -1,5 +1,5 @@
 import unittest
-from webbrowser import browser
+
 
 from english_exercises.authentication import user_exists
 from english_exercises.models import User
@@ -28,4 +28,5 @@ class AuthenticationTests(unittest.TestCase):
         self.browser.fill('username', 'Foo')
         self.browser.fill('password', 'bar')
         self.browser.find_by_value("Login").click()
+        from webbrowser import browser
         assert browser.is_text_present("Succesfull")
