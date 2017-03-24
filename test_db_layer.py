@@ -7,7 +7,7 @@ from english_exercises.models import User
 class DatabaseLayerTests(unittest.TestCase):
 
     user_1 = User('Test_A', 'level_A', 1, 0, 0)
-    params =  {'1': 'work', '2': 'work', '3': 'work', '4': 'work', '5': 'work'}
+    params = {'1': 'work', '2': 'work', '3': 'work', '4': 'work', '5': 'work'}
     client = app.test_client()
     request = client.post('/nouns', environ_base={'HTTP_USER_AGENT': 'Chrome, etc'})
     request.params = params

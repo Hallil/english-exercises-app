@@ -4,7 +4,7 @@ from english_exercises.authentication import user_exists
 from english_exercises.models import User
 from english_exercises import db
 
-class AuthenticationTests(unittest.TestCase):
+class LoginTests(unittest.TestCase):
 
     user = User('Foo', 'bar', 10, 10, 5)
 
