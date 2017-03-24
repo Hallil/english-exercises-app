@@ -1,6 +1,5 @@
 import unittest
 
-
 from english_exercises.authentication import user_exists
 from english_exercises.models import User
 from english_exercises import db
@@ -22,7 +21,7 @@ class AuthenticationTests(unittest.TestCase):
     def test_check_login(self):
         self.assertTrue(user_exists('Foo', 'bar'))
         self.assertFalse(user_exists('bar', 'baz'))
-
+    # valid username and password
     def test_login(self):
         self.browser.visit("http://localhost:5555/login")
         self.browser.fill('username', 'Foo')
