@@ -2,7 +2,7 @@ import xmlrpc.client
 
 # make an object to represent the xml-rpc server
 server_url = "http:/localhost:5555/selenium-driver/RPC2"
-app = xmlrpc.ServerProxy(server_url)
+app = xmlrpc.client.ServerProxy(server_url)
 
 app.setTimeout(15)
 
