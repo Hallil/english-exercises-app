@@ -1,4 +1,4 @@
-import unittest
+import requests, unittest
 from english_exercises import db, app
 from english_exercises.db_layer import correct_answers_in_post, incorrect_answers_in_post, update_user_results
 from english_exercises.models import User
@@ -7,9 +7,9 @@ from english_exercises.models import User
 class DatabaseLayerTests(unittest.TestCase):
 
     user_1 = User('Test_A', 'level_A', 1, 0, 0)
-    params = {'1': 'work', '2': 'work', '3': 'work', '4': 'work', '5': 'work'}
+    params =  {'1': 'quickly', '2': 'quickly', '3': 'quickly', '4': 'quickly', '5': 'quickly'}
     client = app.test_client()
-    request = client.post('/nouns', environ_base={'HTTP_USER_AGENT': 'Chrome, etc'})
+    request = client.post('/adverbs', environ_base={'HTTP_USER_AGENT': 'Chrome, etc'})
     request.params = params
 
     @classmethod
@@ -21,10 +21,10 @@ class DatabaseLayerTests(unittest.TestCase):
         db.session.rollback()
         db.session.query(User).delete()
         db.session.commit()
-#
+
     def test_allowed_in_level(self):
-        self.assertEqual(0, correct_answers_in_post(self.params))
-        self.assertEqual(5, incorrect_answers_in_post(self.params))
+        self.assertEqual(1, correct_answers_in_post(self.params))
+        self.assertEqual(4, incorrect_answers_in_post(self.params))
 
     def test_update_user_results(self):
         update_user_results('Test_A', 5, 5)
