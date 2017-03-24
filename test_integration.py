@@ -4,8 +4,6 @@ import xmlrpc.client
 server_url = "http:/localhost:5555/selenium-driver/RPC2"
 app = xmlrpc.client.ServerProxy(server_url)
 
-app.setTimeout(15)
-
 import os
 
 os.system('\"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe\"'
