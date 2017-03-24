@@ -8,4 +8,3 @@ script:
  - "python3 test_views.py"
  - "python3 test_db_layer.py"
  - "python3 test_login.py"
- - "python3 test_integration.py"

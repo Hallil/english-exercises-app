@@ -1,4 +1,4 @@
-import requests, unittest
+import unittest
 from english_exercises import db, app
 from english_exercises.db_layer import correct_answers_in_post, incorrect_answers_in_post, update_user_results
 from english_exercises.models import User
@@ -21,7 +21,7 @@ class DatabaseLayerTests(unittest.TestCase):
         db.session.rollback()
         db.session.query(User).delete()
         db.session.commit()
-
+#
     def test_allowed_in_level(self):
         self.assertEqual(0, correct_answers_in_post(self.params))
         self.assertEqual(5, incorrect_answers_in_post(self.params))
