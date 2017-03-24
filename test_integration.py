@@ -1,4 +1,4 @@
-import xmlrpc
+import xmlrpc.client
 
 # make an object to represent the xml-rpc server
 server_url = "http:/localhost:5555/selenium-driver/RPC2"
