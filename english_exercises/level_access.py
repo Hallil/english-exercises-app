@@ -30,7 +30,7 @@ def allowed_in_level(level, score):
         else:
             return False
     if 'C' in level:
-        if score > 9:
+        if score > 10:
             return True
         else:
             return False

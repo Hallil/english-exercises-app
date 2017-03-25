@@ -22,6 +22,10 @@ class DatabaseLayerTests(unittest.TestCase):
         db.session.query(User).delete()
         db.session.commit()
 
+    def test_allowed_in_level(self):
+        self.assertEqual(0, correct_answers_in_post(self.params))
+        self.assertEqual(5, incorrect_answers_in_post(self.params))
+
     def test_update_user_results(self):
         update_user_results('Test_A', 5, 5)
         self.assertEqual(6, db.session.query(User).filter_by(username='Test_A').first().amountCorrect)

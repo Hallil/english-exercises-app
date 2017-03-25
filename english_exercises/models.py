@@ -74,7 +74,7 @@ class MultiQuestionAnswer(db.Model):
     question = db.ForeignKey('MultiQuestion.id')
     givenoanswer = db.Column(db.String(80))
     givenchoiceanswer = db.Column(db.String(80), nullable=False)
-#
+
 
     def __init__(self, user, answer, multiplechoiceAnswer):
         self.user = user
