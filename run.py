@@ -40,11 +40,11 @@ def fill_nouns():
     db.session.add(OpenQuestion("There are a lot of %s (chair).", "chairs", "Nouns", "B2"))
 
     # C
-    db.session.add(MultiQuestion("Shakespeare's works %s %s (wunderful).", "are", "wunderful", "Nouns", "C1"))
-    db.session.add(MultiQuestion("She hasn't %s enough %s (experience).", "got", "experience", "Nouns", "C1"))
-    db.session.add(MultiQuestion("You have to ask %s %s (permission).", "for", "permission", "Nouns", "C1"))
-    db.session.add(MultiQuestion("He's looking %s a %s (job).", "for", "job", "Nouns", "C1"))
-    db.session.add(MultiQuestion("I don't %s much %s (luggage).", "have", "luggage", "Nouns", "C1"))
+    db.session.add(OpenQuestion("Shakespeare's works are %s (wunderful).", "wunderful", "Nouns", "C1"))
+    db.session.add(OpenQuestion("She hasn't got enough %s (experience).", "experience", "Nouns", "C1"))
+    db.session.add(OpenQuestion("You have to ask for %s (permission).", "permission", "Nouns", "C1"))
+    db.session.add(OpenQuestion("He's looking for a %s (job).", "job", "Nouns", "C1"))
+    db.session.add(OpenQuestion("I don't have much %s (luggage).", "luggage", "Nouns", "C1"))
     db.session.commit()
 
 def fill_adverbs():

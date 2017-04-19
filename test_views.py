@@ -14,6 +14,5 @@ class ViewsTestCase(unittest.TestCase):
         self.assertEqual(302, self.client.get('/nouns/B2').status_code)
         self.assertEqual(302, self.client.get('/nouns/C1').status_code)
 
-
 if __name__ == '__main__':
     unittest.main()
